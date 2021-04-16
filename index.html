@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de cancelamento</title>
+    <script>
+        function oCancelado() {
+            var motivo = document.getElementById("motivo")
+            var quem = document.getElementById("quem")
+            var quemCancelou = document.getElementById("quemCancelou")
+            var output = document.getElementById("render")
+            var output2 = document.getElementById("render2")
+            var img = document.getElementById("sonic") 
+            output.textContent = `${quem.value} foi cancelado por ${motivo.value}`
+            output2.textContent = `cancelador: ${quemCancelou.value}`
+            img.style.visibility = "visible"
+            setTimeout(function(){
+                img.style.visibility = "hidden"
+            },2500)
+        }
+    </script>
+    <style>
+    .flex{
+        position: absolute;
+        top: 20%;
+        left: 1%;
+        font-size: 25px;
+        width: 250px;
+        height: 60px;
+    }
+    h3.text{
+        position: absolute;
+        top: 30%;
+        left: 1%;  
+    }
+    h4.text{
+        position: absolute;
+        top: 35%;
+        left: 1%;  
+    }
+    .imagem{
+        position: absolute;
+        top: 45%;
+        left: 1%;
+        width: 250px;
+        height: 250px;
+        visibility: hidden;
+    }
+    </style>
+</head>
+<body>
+    <h1>Gerador de cancelamento</h1>
+    <input id="quem" value="o cancelado" type="text" onclick="if(this.value == 'o cancelado'){this.value = ''}" onblur="if(this.value == ''){this.value = 'o cancelado'}">
+    <input id="motivo" value="motivo" type="text" onclick="if(this.value == 'motivo'){this.value = ''}" onblur="if(this.value == ''){this.value = 'motivo'}">
+    <input id="quemCancelou" value="quem cancelou" type="text" onclick="if(this.value == 'quem cancelou'){this.value = ''}" onblur="if(this.value == ''){this.value = 'quem cancelou'}">
+    <button class="flex" onclick="oCancelado()">Gerar cancelamento</button>
+    <h3 class="text" id="render"></h3>
+    <h4 class="text" id="render2"></h4>
+    <img class="imagem" id="sonic" src="sonic cancelado.png" alt="sonic">
+</body>
+</html>
